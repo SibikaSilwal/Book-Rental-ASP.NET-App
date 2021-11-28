@@ -1,0 +1,51 @@
+﻿@*model Book_Rental.ViewModels.RandomBookViewModel*@
+@model IEnumerable<Book_Rental.Models.Customer>
+
+@{
+    ViewBag.Title = "Customers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customer List</h2>
+
+@if (!Model.Any())
+{
+    <p>We currently have no customers.</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th>Membership Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model)
+            {
+            <tr>
+                <!--<td>@Html.ActionLink(@customer.Name, "Customer_Detail", new { id = customer.Id }, null)</td>-->
+                <td>@Html.ActionLink(@customer.Name, "Edit", new { id = customer.Id }, null)</td>
+                <td>@customer.MembershipType.Name</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+    @*<ul class="list-group">
+            @{
+                foreach (var customer in Model)
+                {
+
+                    <li class="list-group-item">
+                        <p>
+                            @Html.ActionLink(@customer.Name, "Customer_Detail", new { id = customer.Id }, null), Discount Rate: @customer.MembershipType.DiscountRate%
+                        </p>
+                    </li>
+                }
+            }
+        </ul>
+    *@
+}
+

@@ -1,0 +1,43 @@
+﻿@*model Book_Rental.ViewModels.RandomBookViewModel*@
+@model IEnumerable<Book_Rental.Models.Book>
+@{
+                /**/
+
+                ViewBag.Title = "Index";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Books Available</h2>
+
+<div class="btn btn-warning">@Html.ActionLink("New Book", "NewBook", new {}, null)</div>
+
+<br /> <br />
+
+@if (!Model.Any())
+{
+    <p>We have no books available currently.</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Book</th>
+                <th>Genre</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in Model)
+            {
+            <tr>
+                <!--<td>@Html.ActionLink(book.Name, "Book_Detail", new { id = book.Id }, null)</td>-->
+                <td>@Html.ActionLink(book.Name, "Edit", new { id = book.Id }, null)</td>
+                <td>@book.Genre.GenreName</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    
+}
+
+
