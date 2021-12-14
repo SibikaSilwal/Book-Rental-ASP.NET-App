@@ -54,18 +54,10 @@ namespace Book_Rental.Controllers
         // GET: books, int? means nullable integer
         public ActionResult Index(int? pageIndex, string sortBy)
         {
-            if (!pageIndex.HasValue)
-            {
-                pageIndex = 1;
-            }
-            if (String.IsNullOrWhiteSpace(sortBy))
-            {
-                sortBy = "Name";
-            }
-            var books = _context.Books.Include(b => b.Genre).ToList();
+            if (User.IsInRole(RoleName.CanManageBooks))
+                return View("Index");
 
-            return View(books);
-            
+            return View("ReadOnlyList");
         }
 
         public ActionResult Book_Detail(int id)
@@ -78,20 +70,32 @@ namespace Book_Rental.Controllers
             return View(book);
         }
 
-        /*Form*/
+        [Authorize(Roles = RoleName.CanManageBooks)]
         public ActionResult NewBook()
         {
             var genres = _context.Genres.ToList();
             var viewModel = new BookFormViewModel()
             {
+                Book = new Book(),
                 Genres = genres
             };
             return View("BookForm", viewModel);
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Book book)
         {
+            // check if form entries are valid
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new BookFormViewModel
+                {
+                    Book = book,
+                    Genres = _context.Genres.ToList()
+                };
+                return View("BookForm", viewModel);
+            }
             if (book.Id == 0)
                 _context.Books.Add(book);
             else
@@ -103,6 +107,7 @@ namespace Book_Rental.Controllers
                 bookInDb.GenreId = book.GenreId;
                 bookInDb.PublishedDate = book.PublishedDate;
                 bookInDb.DateAdded = book.DateAdded;
+                bookInDb.NumberInStock = book.NumberInStock;
             }
             _context.SaveChanges();
             return RedirectToAction("Index", "Books");

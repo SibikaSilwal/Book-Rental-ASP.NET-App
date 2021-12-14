@@ -30,9 +30,11 @@ namespace Book_Rental.Controllers
         {
             // this gives us all the customers, ToList() is a property defined in the DbSet class, include() method to include the cutomer's information about their memberships in the
             // customer object
-            var customers = _context.Customers.Include(c => c.MembershipType).ToList(); 
+            /*var customers = _context.Customers.Include(c => c.MembershipType).ToList(); 
+            return View(customers);*/
 
-            return View(customers);
+            // client side rendering using the api therefore, we do not need to send the list of customers to the view anymore
+            return View();
         }
 
         public ActionResult Customer_Detail(int id)
@@ -51,14 +53,26 @@ namespace Book_Rental.Controllers
             var membershipTypes = _context.MembershipTypes.ToList();
             var viewModel = new CustomerFormViewModel()
             {
+                Customer = new Customer(), // the new customer will be initialized to its default values, eg. id will be initialzed to 0.
                 MembershipTypes = membershipTypes
             };
             return View("CustomerForm", viewModel);
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer)
         {
+            // check if form entries are valid
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new CustomerFormViewModel
+                {
+                    Customer = customer,
+                    MembershipTypes = _context.MembershipTypes.ToList()
+                };
+                return View("CustomerForm", viewModel);
+            }
             if(customer.Id==0)
                 _context.Customers.Add(customer);
             else

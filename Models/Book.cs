@@ -11,6 +11,7 @@ namespace Book_Rental.Models
         //properties
         public int Id { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
         [Display(Name = "Published Date")]
@@ -19,7 +20,10 @@ namespace Book_Rental.Models
         public DateTime DateAdded { get; set; }
 
         [Display(Name = "Number in Stock")]
+        [Range(1,20)]
         public int NumberInStock { get; set; }
+
+        public byte NumberAvailable { get; set; }
 
         public Genre Genre { get; set; }
 

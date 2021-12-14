@@ -1,43 +1,89 @@
 ﻿@*model Book_Rental.ViewModels.RandomBookViewModel*@
 @model IEnumerable<Book_Rental.Models.Book>
 @{
-                /**/
+    /**/
 
-                ViewBag.Title = "Index";
-                Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Books Available</h2>
+<div class="btn float-right action-btn">@Html.ActionLink("New Book", "NewBook", new { }, null)</div>
 
-<div class="btn btn-warning">@Html.ActionLink("New Book", "NewBook", new {}, null)</div>
+<div class="page-header">
+    <h2>Books Available</h2>
+</div>
+
 
 <br /> <br />
 
-@if (!Model.Any())
+@*if (!Model.Any())
 {
     <p>We have no books available currently.</p>
 }
 else
-{
-    <table class="table table-bordered table-hover">
+{*@
+    <table id="books" class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th>Book</th>
                 <th>Genre</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var book in Model)
-            {
-            <tr>
-                <!--<td>@Html.ActionLink(book.Name, "Book_Detail", new { id = book.Id }, null)</td>-->
-                <td>@Html.ActionLink(book.Name, "Edit", new { id = book.Id }, null)</td>
-                <td>@book.Genre.GenreName</td>
-            </tr>
-            }
         </tbody>
     </table>
-    
-}
 
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            //using datatable plugin with customer table
+            var table = $("#books").DataTable({
+                ajax: {
+                    url: "/api/books",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+                        render: function (data, type, book) {
+                            return "<a class='book-title' href='/books/edit/" + book.id + "'>" + book.name + "</a>";
+                        }
+                    },
+                    {
+                        data: "genre.genreName"
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button  class='btn-link js-delete delete-link' data-book-id=" + data + "> Delete </button>";
+                        }
+                    }
+                ]
+            });
+
+            /*Deleting Books*/
+            // efficient than $("#customers .js-delete").on("click", function ()) becuase this would create the click handler for each .js-delete button and store in the memory
+            // the following code stores the handles only once since we are selecting the customer table and adding as filter i.e. .js-delete for onclick method
+            $("#books").on("click", ".js-delete", function () {
+                var button = $(this);
+
+                bootbox.confirm("Are you sure you want to delete this book?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/books/" + button.attr("data-book-id"),
+                            method: "DELETE",
+                            success: function () {
+                                table.row(button.parents("tr")).remove().draw();
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}
 

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace Book_Rental.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         public ActionResult Index()

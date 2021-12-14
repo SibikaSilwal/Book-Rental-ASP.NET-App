@@ -4,28 +4,41 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Title</h2>
+<div class="page-header">
+    <h2>@Model.Title</h2>
+</div>
 
 @using (Html.BeginForm("Save", "Books"))
 {
+    @Html.ValidationSummary(true, "Please fix the following errors.")
     <div class="form-group">
         @Html.LabelFor(m => m.Book.Name)
         @Html.TextBoxFor(m => m.Book.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Book.Name)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Book.PublishedDate)
         @Html.TextBoxFor(m => m.Book.PublishedDate, "{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Book.PublishedDate)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Book.GenreId)
         @Html.DropDownListFor(m => m.Book.GenreId, new SelectList(Model.Genres, "Id", "GenreName"), "Select Genre", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Book.GenreId)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Book.NumberInStock)
         @Html.TextBoxFor(m => m.Book.NumberInStock, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Book.NumberInStock)
     </div>
     @Html.HiddenFor(m => m.Book.DateAdded, new { Value = DateTime.Now })
     @Html.HiddenFor(m => m.Book.Id)
-    <button class="btn btn-primary"> Save </button>
+    @Html.AntiForgeryToken()
+    <button class="btn btn-custom"> Save </button>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
 }
 

@@ -10,7 +10,7 @@ namespace Book_Rental.Models
     {
         public int Id { get; set; }
 
-        [Required] //overriding name column in customer table to be not null
+        [Required(ErrorMessage = "Please enter your name.")] //overriding name column in customer table to be not null
         [StringLength(255)] //and to have max char counts of 255
         public string Name { get; set; }
 
@@ -22,6 +22,7 @@ namespace Book_Rental.Models
         public byte MembershipTypeId { get; set; } // membership table foreign key, entity framework recognizes the name 'MembershipTypeId' as a foreign key
 
         [Display (Name="Date of Birth")]
+        [Min18YearsIfMember]
         public DateTime? BirthDate { get; set; }
     }
 }

@@ -1,0 +1,55 @@
+﻿@*model Book_Rental.ViewModels.RandomBookViewModel*@
+@model IEnumerable<Book_Rental.Models.Book>
+@{
+    /**/
+
+    ViewBag.Title = "BookList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Books Available</h2>
+
+<br /> <br />
+
+@*if (!Model.Any())
+{
+    <p>We have no books available currently.</p>
+}
+else
+{*@
+    <table id="books" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Book</th>
+                <th>Genre</th>              
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            //using datatable plugin with customer table
+            var table = $("#books").DataTable({
+                ajax: {
+                    url: "/api/books",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",                    
+                    },
+                    {
+                        data: "genre.genreName"
+                    }
+                ]
+            });          
+        });
+    </script>
+}
+

@@ -83,7 +83,6 @@ C:\Users\silwa\source\repos\Book Rental\bin\Microsoft.AspNet.Identity.EntityFram
 C:\Users\silwa\source\repos\Book Rental\bin\Microsoft.Owin.xml
 C:\Users\silwa\source\repos\Book Rental\bin\Microsoft.Owin.Security.xml
 C:\Users\silwa\source\repos\Book Rental\bin\System.Web.Helpers.xml
-C:\Users\silwa\source\repos\Book Rental\bin\System.Web.Mvc.xml
 C:\Users\silwa\source\repos\Book Rental\bin\System.Web.Optimization.xml
 C:\Users\silwa\source\repos\Book Rental\bin\System.Web.Razor.xml
 C:\Users\silwa\source\repos\Book Rental\bin\System.Web.WebPages.xml
@@ -107,7 +106,6 @@ C:\Users\silwa\source\repos\Book Rental\obj\Debug\Book Rental.csproj.CoreCompile
 C:\Users\silwa\source\repos\Book Rental\obj\Debug\Book Rental.csproj.CopyComplete
 C:\Users\silwa\source\repos\Book Rental\obj\Debug\Book Rental.dll
 C:\Users\silwa\source\repos\Book Rental\obj\Debug\Book Rental.pdb
-C:\Users\silwa\source\repos\Book Rental\obj\Debug\Book Rental.csprojAssemblyReference.cache
 C:\Users\silwa\source\repos\Book Rental\obj\Debug\Book_Rental.Migrations.NameAddedToMembershipType.resources
 C:\Users\silwa\source\repos\Book Rental\obj\Debug\Book_Rental.Migrations.UpdateMembershipTypeDataWithName.resources
 C:\Users\silwa\source\repos\Book Rental\obj\Debug\Book_Rental.Migrations.CustomerDOBAdded.resources
@@ -117,3 +115,32 @@ C:\Users\silwa\source\repos\Book Rental\obj\Debug\Book_Rental.Migrations.DOBUpda
 C:\Users\silwa\source\repos\Book Rental\obj\Debug\Book_Rental.Migrations.CreatedGenreModelandUpdatedBooksModel.resources
 C:\Users\silwa\source\repos\Book Rental\obj\Debug\Book_Rental.Migrations.PopulateGenreTable.resources
 C:\Users\silwa\source\repos\Book Rental\obj\Debug\Book_Rental.Migrations.MovedRequiredToGenreId.resources
+C:\Users\silwa\source\repos\Book Rental\obj\Debug\Book_Rental.Migrations.BookNameRequired.resources
+C:\Users\silwa\source\repos\Book Rental\obj\Debug\Book_Rental.Migrations.NumofStockRangeAdded.resources
+C:\Users\silwa\source\repos\Book Rental\bin\System.Net.Http.Formatting.dll
+C:\Users\silwa\source\repos\Book Rental\bin\System.Web.Http.dll
+C:\Users\silwa\source\repos\Book Rental\bin\System.Web.Http.WebHost.dll
+C:\Users\silwa\source\repos\Book Rental\bin\System.Net.Http.Formatting.xml
+C:\Users\silwa\source\repos\Book Rental\bin\System.Web.Http.xml
+C:\Users\silwa\source\repos\Book Rental\bin\System.Web.Http.WebHost.xml
+C:\Users\silwa\source\repos\Book Rental\bin\AutoMapper.dll
+C:\Users\silwa\source\repos\Book Rental\bin\AutoMapper.xml
+C:\Users\silwa\source\repos\Book Rental\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\silwa\source\repos\Book Rental\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\silwa\source\repos\Book Rental\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\silwa\source\repos\Book Rental\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\silwa\source\repos\Book Rental\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\silwa\source\repos\Book Rental\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\silwa\source\repos\Book Rental\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\silwa\source\repos\Book Rental\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\silwa\source\repos\Book Rental\bin\System.Web.Mvc.xml
+C:\Users\silwa\source\repos\Book Rental\obj\Debug\Book Rental.csprojAssemblyReference.cache
+C:\Users\silwa\source\repos\Book Rental\obj\Debug\Book_Rental.Migrations.SeedUsers.resources
+C:\Users\silwa\source\repos\Book Rental\obj\Debug\Book_Rental.Migrations.AddDrvingLicense.resources
+C:\Users\silwa\source\repos\Book Rental\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\silwa\source\repos\Book Rental\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\silwa\source\repos\Book Rental\obj\Debug\Book_Rental.Migrations.RentalClassCreated.resources
+C:\Users\silwa\source\repos\Book Rental\obj\Debug\Book_Rental.Migrations.NumberAvailableAddedtoBook.resources
+C:\Users\silwa\source\repos\Book Rental\bin\Toast.exe
+C:\Users\silwa\source\repos\Book Rental\bin\Toaster.dll
+C:\Users\silwa\source\repos\Book Rental\bin\ToolBelt.dll
